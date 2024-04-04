@@ -4,21 +4,20 @@
     {
         public class Menu
         {
-            Game gameSession;
+            public Enum[] MenuOptions { get; private set; }
+            public string? HeaderText { get; private set; }
+            public string? AdditionalText { get; private set; }
 
-            MenuOptions menuOptions = MenuOptions.NewGame;
-
-            public enum MenuOptions
+            public Menu(Enum[] menuOptions, string? headerText, string? additionalText)
             {
-                NewGame,
-                Exit
+                MenuOptions = menuOptions ?? throw new ArgumentNullException(nameof(menuOptions));
+
+                MenuOptions = menuOptions;
+                HeaderText = headerText;
+                AdditionalText = additionalText;
             }
 
-            public Menu()
-            {
-            }
-
-            public void Show()
+            /*public void Show()
             {
 
                 Dictionary<MenuOptions, string> menuOptionsDictionary = new Dictionary<MenuOptions, string>();
@@ -104,7 +103,7 @@
                 Console.Clear();
                 Show();
                 return;
-            }
+            }*/
         }
     }
 }
