@@ -13,16 +13,18 @@
             AdditionalText = additionalText;
         }
 
-        /*public void Show()
+        public void Show()
         {
 
-            Dictionary<MenuOptions, string> menuOptionsDictionary = new Dictionary<MenuOptions, string>();
+            /*Dictionary<MenuOptions, string> menuOptionsDictionary = new Dictionary<MenuOptions, string>();
             menuOptionsDictionary.Add(MenuOptions.NewGame, "New Game");
-            menuOptionsDictionary.Add(MenuOptions.Exit, "Exit");
+            menuOptionsDictionary.Add(MenuOptions.Exit, "Exit");*/
 
-            string header = GetHeader("Console Game");
+            string header = GetHeader(HeaderText);
 
-            while (true)
+            Console.WriteLine(header);
+
+            /*while (true)
             {
                 Console.SetCursorPosition(0, 0);
                 Console.Clear();
@@ -46,21 +48,23 @@
                     case ConsoleKey.Enter: MenuAction(menuOptions); break;
                     default: break;
                 }
-            }
+            }*/
 
         }
 
-        public void MoveMenuOptionsEnum(int i)
+        /*public void MoveMenuOptionsEnum(int i)
         {
             int numOptions = Enum.GetNames(typeof(MenuOptions)).Length;
             menuOptions = (MenuOptions)(((int)menuOptions + i + numOptions) % numOptions);
-        }
+        }*/
 
         public string GetHeader(string text)
         {
             string topFrame = "╔";
             string mediumFrame = "║";
             string lowFrame = "╚";
+
+            //string[] parts = text.Split('\n');
 
             foreach (char letter in text)
             {
@@ -75,7 +79,7 @@
             return $"{topFrame}\n{mediumFrame}\n{lowFrame}";
         }
 
-        public void MenuAction(MenuOptions menuOption)
+        /*public void MenuAction(MenuOptions menuOption)
         {
             switch (menuOption)
             {

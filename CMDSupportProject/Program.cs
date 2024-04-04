@@ -10,7 +10,9 @@ namespace CMDSupportProject
             menuOptions.Add("Start Game");
             menuOptions.Add("Exit Game");
 
-            GameMenu gameMenu = new GameMenu(menuOptions, "test", "test");
+            GameMenu gameMenu = new GameMenu(menuOptions, "test\nto ja\nelo\n5\ngdfgdfgfd\ngdfgfd", "test");
+
+            gameMenu.Show();
         }
     }
 }
