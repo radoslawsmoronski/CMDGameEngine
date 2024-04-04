@@ -1,4 +1,6 @@
-﻿namespace CMDSupportProject
+﻿using CMDGameEngine;
+
+namespace CMDSupportProject
 {
     internal class Program
     {
