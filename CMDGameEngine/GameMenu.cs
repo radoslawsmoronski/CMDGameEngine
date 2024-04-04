@@ -2,108 +2,103 @@
 {
     public class GameMenu
     {
-        public class Menu
+        List<string> menuOptions;
+        public string? HeaderText { get; private set; }
+        public string? AdditionalText { get; private set; }
+
+        public GameMenu(List<string> menuOptions, string? headerText, string? additionalText)
         {
-            public Enum[] MenuOptions { get; private set; }
-            public string? HeaderText { get; private set; }
-            public string? AdditionalText { get; private set; }
+            this.menuOptions = menuOptions;
+            HeaderText = headerText;
+            AdditionalText = additionalText;
+        }
 
-            public Menu(Enum[] menuOptions, string? headerText, string? additionalText)
+        /*public void Show()
+        {
+
+            Dictionary<MenuOptions, string> menuOptionsDictionary = new Dictionary<MenuOptions, string>();
+            menuOptionsDictionary.Add(MenuOptions.NewGame, "New Game");
+            menuOptionsDictionary.Add(MenuOptions.Exit, "Exit");
+
+            string header = GetHeader("Console Game");
+
+            while (true)
             {
-                MenuOptions = menuOptions ?? throw new ArgumentNullException(nameof(menuOptions));
+                Console.SetCursorPosition(0, 0);
+                Console.Clear();
 
-                MenuOptions = menuOptions;
-                HeaderText = headerText;
-                AdditionalText = additionalText;
-            }
+                string menuString = header + "\n\n";
 
-            /*public void Show()
-            {
-
-                Dictionary<MenuOptions, string> menuOptionsDictionary = new Dictionary<MenuOptions, string>();
-                menuOptionsDictionary.Add(MenuOptions.NewGame, "New Game");
-                menuOptionsDictionary.Add(MenuOptions.Exit, "Exit");
-
-                string header = GetHeader("Console Game");
-
-                while (true)
+                foreach (KeyValuePair<MenuOptions, string> pair in menuOptionsDictionary)
                 {
-                    Console.SetCursorPosition(0, 0);
-                    Console.Clear();
-
-                    string menuString = header + "\n\n";
-
-                    foreach (KeyValuePair<MenuOptions, string> pair in menuOptionsDictionary)
-                    {
-                        if (pair.Key == menuOptions) menuString += $"\n> {pair.Value} <\n\n";
-                        else menuString += $"  {pair.Value}  \n";
-                    }
-
-                    Console.WriteLine(menuString);
-
-                    ConsoleKeyInfo keyInfo = Console.ReadKey(true);
-
-                    switch (keyInfo.Key)
-                    {
-                        case ConsoleKey.UpArrow: MoveMenuOptionsEnum(-1); break;
-                        case ConsoleKey.DownArrow: MoveMenuOptionsEnum(+1); break;
-                        case ConsoleKey.Enter: MenuAction(menuOptions); break;
-                        default: break;
-                    }
+                    if (pair.Key == menuOptions) menuString += $"\n> {pair.Value} <\n\n";
+                    else menuString += $"  {pair.Value}  \n";
                 }
 
-            }
+                Console.WriteLine(menuString);
 
-            public void MoveMenuOptionsEnum(int i)
-            {
-                int numOptions = Enum.GetNames(typeof(MenuOptions)).Length;
-                menuOptions = (MenuOptions)(((int)menuOptions + i + numOptions) % numOptions);
-            }
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
 
-            public string GetHeader(string text)
-            {
-                string topFrame = "╔";
-                string mediumFrame = "║";
-                string lowFrame = "╚";
-
-                foreach (char letter in text)
+                switch (keyInfo.Key)
                 {
-                    topFrame += "═";
-                    lowFrame += "═";
-                }
-
-                topFrame += "╗";
-                mediumFrame += $"{text}║";
-                lowFrame += "╝";
-
-                return $"{topFrame}\n{mediumFrame}\n{lowFrame}";
-            }
-
-            public void MenuAction(MenuOptions menuOption)
-            {
-                switch (menuOption)
-                {
-                    case MenuOptions.Exit: Environment.Exit(0); break;
-                    case MenuOptions.NewGame: NewGame(); break;
+                    case ConsoleKey.UpArrow: MoveMenuOptionsEnum(-1); break;
+                    case ConsoleKey.DownArrow: MoveMenuOptionsEnum(+1); break;
+                    case ConsoleKey.Enter: MenuAction(menuOptions); break;
                     default: break;
                 }
             }
 
-            public void NewGame()
-            {
-                Console.Clear();
+        }
 
-                gameSession = new Game(100, 20);
-                gameSession.BackToMenu += BackToMenu;
-                gameSession.Run();
+        public void MoveMenuOptionsEnum(int i)
+        {
+            int numOptions = Enum.GetNames(typeof(MenuOptions)).Length;
+            menuOptions = (MenuOptions)(((int)menuOptions + i + numOptions) % numOptions);
+        }
+
+        public string GetHeader(string text)
+        {
+            string topFrame = "╔";
+            string mediumFrame = "║";
+            string lowFrame = "╚";
+
+            foreach (char letter in text)
+            {
+                topFrame += "═";
+                lowFrame += "═";
             }
 
-            public void BackToMenu()
-            {
-                Console.Clear();
-                Show();
-                return;
-            }*/
+            topFrame += "╗";
+            mediumFrame += $"{text}║";
+            lowFrame += "╝";
+
+            return $"{topFrame}\n{mediumFrame}\n{lowFrame}";
         }
+
+        public void MenuAction(MenuOptions menuOption)
+        {
+            switch (menuOption)
+            {
+                case MenuOptions.Exit: Environment.Exit(0); break;
+                case MenuOptions.NewGame: NewGame(); break;
+                default: break;
+            }
+        }
+
+        public void NewGame()
+        {
+            Console.Clear();
+
+            gameSession = new Game(100, 20);
+            gameSession.BackToMenu += BackToMenu;
+            gameSession.Run();
+        }
+
+        public void BackToMenu()
+        {
+            Console.Clear();
+            Show();
+            return;
+        }*/
     }
 }
