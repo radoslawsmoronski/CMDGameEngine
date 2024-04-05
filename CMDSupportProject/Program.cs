@@ -32,7 +32,7 @@ namespace CMDSupportProject
         {
             gameMenu.CloseMenu();
 
-            Screen newScreen = new Screen();
+            Screen newScreen = new Screen(50, 20, "test");
 
             Console.WriteLine(newScreen.GetScreenFramePerIteration());
         }

@@ -16,7 +16,7 @@ namespace CMDGameEngine.Screen
 
         public string? HeaderText { get; private set; } = null;
 
-        public Screen(int screenWidth = 20, int screenHeight = 20, string? headerText = null) 
+        public Screen(int screenWidth = 50, int screenHeight = 20, string? headerText = null) 
         {
             ScreenWidth = screenWidth;
             ScreenHeight = screenHeight;
@@ -37,16 +37,17 @@ namespace CMDGameEngine.Screen
             
             if(HeaderText != null)
             {
-                stringBuilder.Append(HeaderText);
+                stringBuilder.Append(" " + HeaderText);
+                stringBuilder.AppendLine();
                 stringBuilder.AppendLine();
             }
 
-            for (int preY = 0; preY < (ScreenHeight+2); preY++)
+            for (int preY = 0; preY < (ScreenHeight + 2); preY++)
             {
                 stringBuilder.Append(" ");
                 for (int preX = 0; preX < (ScreenWidth + 2); preX++)
                 {
-                    if (preX == 0 || preY == 0 || preX == (ScreenHeight + 1) || preY == (ScreenWidth + 1))
+                    if (preX == 0 || preY == 0 || preX == (ScreenWidth + 1) || preY == (ScreenHeight + 1))
                     {
                         stringBuilder.Append(screenFrame.GetFrameSignOn(preX, preY, ScreenWidth+1, ScreenHeight+1));
                         continue;
