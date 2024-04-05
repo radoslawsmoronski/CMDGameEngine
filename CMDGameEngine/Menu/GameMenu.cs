@@ -3,19 +3,23 @@ using System.Text;
 using static System.Net.Mime.MediaTypeNames;
 
 using CMDGameEngine.Additional;
+using System.Reflection.PortableExecutable;
 
 namespace CMDGameEngine.Menu
 {
     public class GameMenu
     {
-        List<string> menuOptions;
+        List<MenuOption> menuOptions;
+        private MenuOption currentChooseMenuOption;
         public string? HeaderText { get; private set; }
         public string? AdditionalText { get; private set; }
         public Frame HeaderFrame { get; private set; }
 
-        public GameMenu(List<string> menuOptions, string? headerText, string? additionalText)
+        public GameMenu(List<MenuOption> menuOptions, string? headerText, string? additionalText)
         {
             this.menuOptions = menuOptions;
+            currentChooseMenuOption = this.menuOptions[0];
+
             HeaderText = headerText;
             AdditionalText = additionalText;
 
@@ -24,43 +28,41 @@ namespace CMDGameEngine.Menu
 
         public void Show()
         {
-
-            if (HeaderText != null)
-            {
-                string header = GetHeader(HeaderText);
-                Console.WriteLine(header);
-            }
-
-            if (AdditionalText != null)
-            {
-                Console.WriteLine(AdditionalText);
-            }
-
-            /*while (true)
+            while (true)
             {
                 Console.SetCursorPosition(0, 0);
-                Console.Clear();
 
-                string menuString = header + "\n\n";
+                string menuString = "";
 
-                foreach (KeyValuePair<MenuOptions, string> pair in menuOptionsDictionary)
+                if (HeaderText != null)
                 {
-                    if (pair.Key == menuOptions) menuString += $"\n> {pair.Value} <\n\n";
-                    else menuString += $"  {pair.Value}  \n";
+                    string header = GetHeader(HeaderText);
+                    menuString += header;
+                }
+
+                if (AdditionalText != null)
+                {
+                    menuString += "\n" + AdditionalText + "\n";
+                }
+
+                foreach (MenuOption menuOption in menuOptions)
+                {
+                    if(menuOption == currentChooseMenuOption) menuString += $"\n> {menuOption.Text} <\n\n";
+                    else menuString += $"  {menuOption.Text}  \n";
                 }
 
                 Console.WriteLine(menuString);
 
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true);
 
-                switch (keyInfo.Key)
+                /*switch (keyInfo.Key)
                 {
                     case ConsoleKey.UpArrow: MoveMenuOptionsEnum(-1); break;
                     case ConsoleKey.DownArrow: MoveMenuOptionsEnum(+1); break;
                     case ConsoleKey.Enter: MenuAction(menuOptions); break;
                     default: break;
-                }
-            }*/
+                }*/
+            }
 
         }
 
