@@ -4,7 +4,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 using CMDGameEngine.Additional;
 
-namespace CMDGameEngine
+namespace CMDGameEngine.Menu
 {
     public class GameMenu
     {

@@ -1,4 +1,4 @@
-﻿using CMDGameEngine;
+﻿using CMDGameEngine.Menu;
 
 namespace CMDSupportProject
 {
