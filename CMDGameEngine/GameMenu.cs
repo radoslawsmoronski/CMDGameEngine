@@ -74,7 +74,7 @@ namespace CMDGameEngine
         {
             string[] lines = text.Split('\n');
             int headerHeight = lines.Length;
-            int headerWidth = GetLengthOfTheLongestPart(lines);
+            int headerWidth = StringPartsAnalyzer.GetLengthOfTheLongestPart(lines);
 
             StringBuilder buffer = new StringBuilder();
 
@@ -104,23 +104,6 @@ namespace CMDGameEngine
             }
 
             return buffer.ToString();
-        }
-
-        private int GetLengthOfTheLongestPart(string[] parts)
-        {
-            int longestIndex = -1;
-            int maxLength = 0;
-
-            for (int i = 0; i < parts.Length; i++)
-            {
-                if (parts[i].Length > maxLength)
-                {
-                    longestIndex = i;
-                    maxLength = parts[i].Length;
-                }
-            }
-
-            return maxLength;
         }
 
         /*public void MenuAction(MenuOptions menuOption)
