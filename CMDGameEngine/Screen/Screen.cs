@@ -40,7 +40,7 @@ namespace CMDGameEngine.Screen
                 Console.SetCursorPosition(0, 0);
 
                 string screenFramePerIteration = GetScreenFramePerIteration();
-                Console.WriteLine(screenFramePerIteration);
+                Console.WriteLine(screenFramePerIteration); 
             }
         }
 
