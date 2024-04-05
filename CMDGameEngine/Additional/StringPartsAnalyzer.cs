@@ -10,14 +10,12 @@ namespace CMDGameEngine.Additional
     {
         public static int GetLengthOfTheLongestPart(string[] parts)
         {
-            int longestIndex = -1;
             int maxLength = 0;
 
             for (int i = 0; i < parts.Length; i++)
             {
                 if (parts[i].Length > maxLength)
                 {
-                    longestIndex = i;
                     maxLength = parts[i].Length;
                 }
             }
