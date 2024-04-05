@@ -25,13 +25,16 @@ namespace CMDGameEngine
         public void Show()
         {
 
-            /*Dictionary<MenuOptions, string> menuOptionsDictionary = new Dictionary<MenuOptions, string>();
-            menuOptionsDictionary.Add(MenuOptions.NewGame, "New Game");
-            menuOptionsDictionary.Add(MenuOptions.Exit, "Exit");*/
+            if (HeaderText != null)
+            {
+                string header = GetHeader(HeaderText);
+                Console.WriteLine(header);
+            }
 
-            string header = GetHeader(HeaderText);
-
-            Console.WriteLine(header);
+            if (AdditionalText != null)
+            {
+                Console.WriteLine(AdditionalText);
+            }
 
             /*while (true)
             {

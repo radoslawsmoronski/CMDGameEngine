@@ -10,7 +10,7 @@ namespace CMDSupportProject
             menuOptions.Add("Start Game");
             menuOptions.Add("Exit Game");
 
-            GameMenu gameMenu = new GameMenu(menuOptions, "Game snake\nversion\n2.0", "test");
+            GameMenu gameMenu = new GameMenu(menuOptions, "test", "test");
 
             gameMenu.Show();
         }
