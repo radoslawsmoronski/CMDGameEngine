@@ -42,13 +42,21 @@ namespace CMDGameEngine.Menu
 
                 if (AdditionalText != null)
                 {
-                    menuString += "\n" + AdditionalText + "\n\n";
+                    menuString += "\n" + AdditionalText + "\n";
                 }
+
+                menuString += "\n";
 
                 foreach (MenuOption menuOption in menuOptions)
                 {
-                    if(menuOption == currentChooseMenuOption) menuString += $"\n> {menuOption.Text} <\n\n";
-                    else menuString += $"  {menuOption.Text}  \n";
+                    if (menuOption == currentChooseMenuOption)
+                    {
+                        menuString += $"\n> {menuOption.Text} <\n\n";
+                    }
+                    else
+                    {
+                        menuString += $"  {menuOption.Text}  \n";
+                    }
                 }
 
                 Console.Clear();
