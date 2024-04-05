@@ -25,7 +25,6 @@ namespace CMDSupportProject
 
 
             gameMenu.Show();
-
         }
 
         public static void StartGame()
