@@ -42,7 +42,7 @@ namespace CMDGameEngine.Menu
 
                 if (AdditionalText != null)
                 {
-                    menuString += "\n" + AdditionalText + "\n";
+                    menuString += "\n" + AdditionalText + "\n\n";
                 }
 
                 foreach (MenuOption menuOption in menuOptions)
@@ -51,26 +51,29 @@ namespace CMDGameEngine.Menu
                     else menuString += $"  {menuOption.Text}  \n";
                 }
 
+                Console.Clear();
                 Console.WriteLine(menuString);
 
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true);
 
-                /*switch (keyInfo.Key)
+                switch (keyInfo.Key)
                 {
-                    case ConsoleKey.UpArrow: MoveMenuOptionsEnum(-1); break;
-                    case ConsoleKey.DownArrow: MoveMenuOptionsEnum(+1); break;
-                    case ConsoleKey.Enter: MenuAction(menuOptions); break;
+                    case ConsoleKey.UpArrow: MoveMenuOptions(-1); break;
+                    case ConsoleKey.DownArrow: MoveMenuOptions(+1); break;
+                    case ConsoleKey.Enter: currentChooseMenuOption.Action(); break;
                     default: break;
-                }*/
+                }
             }
 
         }
 
-        /*public void MoveMenuOptionsEnum(int i)
+        public void MoveMenuOptions(int i)
         {
-            int numOptions = Enum.GetNames(typeof(MenuOptions)).Length;
-            menuOptions = (MenuOptions)(((int)menuOptions + i + numOptions) % numOptions);
-        }*/
+            int numOptions = menuOptions.Count;
+            int currentIndex = menuOptions.IndexOf(currentChooseMenuOption);
+            int newIndex = (currentIndex + i + numOptions) % numOptions;
+            currentChooseMenuOption = menuOptions[newIndex];
+        }
 
         public string GetHeader(string text)
         {
@@ -108,30 +111,5 @@ namespace CMDGameEngine.Menu
             return buffer.ToString();
         }
 
-        /*public void MenuAction(MenuOptions menuOption)
-        {
-            switch (menuOption)
-            {
-                case MenuOptions.Exit: Environment.Exit(0); break;
-                case MenuOptions.NewGame: NewGame(); break;
-                default: break;
-            }
-        }
-
-        public void NewGame()
-        {
-            Console.Clear();
-
-            gameSession = new Game(100, 20);
-            gameSession.BackToMenu += BackToMenu;
-            gameSession.Run();
-        }
-
-        public void BackToMenu()
-        {
-            Console.Clear();
-            Show();
-            return;
-        }*/
     }
 }

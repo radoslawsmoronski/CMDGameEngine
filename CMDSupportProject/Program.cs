@@ -18,6 +18,16 @@ namespace CMDSupportProject
                 Console.WriteLine("Executing action...");
             }));
 
+            menuOptions.Add(new MenuOption("Exit2", () =>
+            {
+                Console.WriteLine("Executing action...");
+            }));
+
+            menuOptions.Add(new MenuOption("Exit2", () =>
+            {
+                Console.WriteLine("Executing action...");
+            }));
+
             GameMenu gameMenu = new GameMenu(menuOptions, "test", "test");
 
             gameMenu.Show();
