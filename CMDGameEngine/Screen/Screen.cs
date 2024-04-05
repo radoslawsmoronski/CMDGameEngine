@@ -37,7 +37,10 @@ namespace CMDGameEngine.Screen
 
             while (IsScreenOn)
             {
-                GetScreenFramePerIteration();
+                Console.SetCursorPosition(0, 0);
+
+                string screenFramePerIteration = GetScreenFramePerIteration();
+                Console.WriteLine(screenFramePerIteration);
             }
         }
 

@@ -34,7 +34,7 @@ namespace CMDSupportProject
 
             Screen newScreen = new Screen(50, 20, "test");
 
-            Console.WriteLine(newScreen.GetScreenFramePerIteration());
+            newScreen.Show();
         }
 
 
