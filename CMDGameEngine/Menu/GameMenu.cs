@@ -15,6 +15,8 @@ namespace CMDGameEngine.Menu
         public string? AdditionalText { get; private set; }
         public Frame HeaderFrame { get; private set; }
 
+        public bool IsMenuOn { get; private set; }
+
         public GameMenu(List<MenuOption> menuOptions, string? headerText, string? additionalText)
         {
             this.menuOptions = menuOptions;
@@ -28,6 +30,8 @@ namespace CMDGameEngine.Menu
 
         public void Show()
         {
+            IsMenuOn = true;
+
             while (true)
             {
                 Console.SetCursorPosition(0, 0);
@@ -117,6 +121,12 @@ namespace CMDGameEngine.Menu
             }
 
             return buffer.ToString();
+        }
+
+        public void CloseMenu()
+        {
+            IsMenuOn = false;
+            Console.Clear();
         }
 
     }
