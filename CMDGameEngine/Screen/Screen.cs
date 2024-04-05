@@ -9,7 +9,7 @@ namespace CMDGameEngine.Screen
 {
     public class Screen
     {
-        public bool IsScreenOn { get; private set; } = true;
+        public bool IsScreenOn { get; private set; }
 
         public int ScreenWidth { get; private set; }
         public int ScreenHeight { get; private set; }
@@ -33,7 +33,9 @@ namespace CMDGameEngine.Screen
 
         public void Show()
         {
-            while(IsScreenOn)
+            IsScreenOn = true;
+
+            while (IsScreenOn)
             {
                 GetScreenFramePerIteration();
             }
@@ -72,6 +74,11 @@ namespace CMDGameEngine.Screen
             }
 
             return stringBuilder.ToString();
+        }
+
+        public void CloseScreen()
+        {
+            IsScreenOn = false;
         }
     }
 }
