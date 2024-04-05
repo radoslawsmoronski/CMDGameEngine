@@ -17,22 +17,27 @@ namespace CMDGameEngine.Menu
 
         public bool IsMenuOn { get; private set; }
 
-        public GameMenu(List<MenuOption> menuOptions, string? headerText, string? additionalText)
+        public GameMenu(string? headerText, string? additionalText)
         {
-            this.menuOptions = menuOptions;
-            currentChooseMenuOption = this.menuOptions[0];
-
             HeaderText = headerText;
             AdditionalText = additionalText;
 
             HeaderFrame = new Frame();
         }
 
+        public void AddMenuOptions(List<MenuOption> menuOptions)
+        {
+            this.menuOptions = menuOptions;
+            currentChooseMenuOption = this.menuOptions[0];
+        }
+
         public void Show()
         {
+            if(menuOptions == null) throw new ArgumentNullException(nameof(menuOptions));
+
             IsMenuOn = true;
 
-            while (true)
+            while (IsMenuOn)
             {
                 Console.SetCursorPosition(0, 0);
 
