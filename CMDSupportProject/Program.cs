@@ -1,4 +1,5 @@
 ﻿using CMDGameEngine.Menu;
+using CMDGameEngine.Screen;
 
 namespace CMDSupportProject
 {
@@ -24,13 +25,18 @@ namespace CMDSupportProject
 
 
             gameMenu.Show();
+
         }
 
         public static void StartGame()
         {
             gameMenu.CloseMenu();
-            Console.WriteLine("Hello CMD Game World!!");
+
+            Screen newScreen = new Screen();
+
+            Console.WriteLine(newScreen.GetScreenFramePerIteration());
         }
+
 
     }
 }
