@@ -14,20 +14,36 @@ namespace CMDGameEngine.Screen
 
         public Frame screenFrame { get; private set; }
 
-        public Screen(int screenWidth = 20, int screenHeight = 20) 
+        public string? HeaderText { get; private set; } = null;
+
+        public Screen(int screenWidth = 20, int screenHeight = 20, string? headerText = null) 
         {
             ScreenWidth = screenWidth;
             ScreenHeight = screenHeight;
 
             screenFrame = new Frame();
+
+            if (headerText != null)
+            {
+                HeaderText = headerText;
+            }
         }
 
         public string GetScreenFramePerIteration()
         {
             StringBuilder stringBuilder = new StringBuilder();
 
-            for(int preY = 0; preY < (ScreenHeight+2); preY++)
+            stringBuilder.AppendLine();
+            
+            if(HeaderText != null)
             {
+                stringBuilder.Append(HeaderText);
+                stringBuilder.AppendLine();
+            }
+
+            for (int preY = 0; preY < (ScreenHeight+2); preY++)
+            {
+                stringBuilder.Append(" ");
                 for (int preX = 0; preX < (ScreenWidth + 2); preX++)
                 {
                     if (preX == 0 || preY == 0 || preX == (ScreenHeight + 1) || preY == (ScreenWidth + 1))
