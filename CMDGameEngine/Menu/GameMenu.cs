@@ -9,13 +9,16 @@ namespace CMDGameEngine.Menu
 {
     public class GameMenu
     {
+        public bool IsMenuOn { get; private set; }
+
         List<MenuOption> menuOptions;
         private MenuOption currentChooseMenuOption;
+
         public string? HeaderText { get; private set; }
         public string? AdditionalText { get; private set; }
+
         public Frame HeaderFrame { get; private set; }
 
-        public bool IsMenuOn { get; private set; }
 
         public GameMenu(string? headerText, string? additionalText)
         {
@@ -41,35 +44,35 @@ namespace CMDGameEngine.Menu
             {
                 Console.SetCursorPosition(0, 0);
 
-                string menuString = "";
+                StringBuilder buffer = new StringBuilder();
 
                 if (HeaderText != null)
                 {
                     string header = GetHeader(HeaderText);
-                    menuString += header;
+                    buffer.Append(header);
                 }
 
                 if (AdditionalText != null)
                 {
-                    menuString += "\n" + AdditionalText + "\n";
+                    buffer.Append("\n" + AdditionalText + "\n");
                 }
 
-                menuString += "\n";
+                buffer.AppendLine();
 
                 foreach (MenuOption menuOption in menuOptions)
                 {
                     if (menuOption == currentChooseMenuOption)
                     {
-                        menuString += $"\n  > {menuOption.Text} <\n\n";
+                        buffer.Append($"\n  > {menuOption.Text} <\n\n");
                     }
                     else
                     {
-                        menuString += $"  {menuOption.Text}\n";
+                        buffer.Append($"  {menuOption.Text}\n");
                     }
                 }
 
                 Console.Clear();
-                Console.WriteLine(menuString);
+                Console.WriteLine(buffer);
 
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true);
 
