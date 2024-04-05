@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace CMDGameEngine.GameObjects
 {
-    public class Object
+    public class GameObject
     {
         public int X { get; set; }
         public int Y { get; set; }
 
-        public Object(int x, int y)
+        public GameObject(int x, int y)
         {
             X = x;
             Y = y;
 
+            GameObjects.AddObject(this);
         }
 
         public void Move(int x, int y)
