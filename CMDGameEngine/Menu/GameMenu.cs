@@ -60,11 +60,11 @@ namespace CMDGameEngine.Menu
                 {
                     if (menuOption == currentChooseMenuOption)
                     {
-                        menuString += $"\n> {menuOption.Text} <\n\n";
+                        menuString += $"\n  > {menuOption.Text} <\n\n";
                     }
                     else
                     {
-                        menuString += $"  {menuOption.Text}  \n";
+                        menuString += $"  {menuOption.Text}\n";
                     }
                 }
 
@@ -100,8 +100,11 @@ namespace CMDGameEngine.Menu
 
             StringBuilder buffer = new StringBuilder();
 
+            buffer.Append("\n");
+
             foreach (var lineIndex in Enumerable.Range(-1, headerHeight + 2))
             {
+                buffer.Append("  ");
                 foreach (var charIndex in Enumerable.Range(-1, headerWidth + 2))
                 {
                     bool isTopLeftCorner = charIndex == -1 && lineIndex == -1;
@@ -134,5 +137,18 @@ namespace CMDGameEngine.Menu
             Console.Clear();
         }
 
+        private string GetLeftSpacesMargin(int containerWidth, int elementInWidth)
+        {
+            string leftSpacesMargin = "";
+
+            int amountIteration = (containerWidth - elementInWidth) / 2;
+
+            for (int i = 0; i < amountIteration; i++)
+            {
+                leftSpacesMargin += " ";
+            }
+
+            return leftSpacesMargin;
+        }
     }
 }
