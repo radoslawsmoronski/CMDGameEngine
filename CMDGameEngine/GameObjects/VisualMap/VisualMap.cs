@@ -12,9 +12,9 @@ namespace CMDGameEngine.GameObjects.VisualMap
     {
         List<VisualElement> visualElements = new List<VisualElement>();
 
-        public VisualMap(List<VisualElement> visualElements)
+        public VisualMap(string xml)
         {
-            this.visualElements = visualElements;
+            
         }
     }
 }
