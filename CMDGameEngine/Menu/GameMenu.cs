@@ -5,19 +5,21 @@ using static System.Net.Mime.MediaTypeNames;
 using CMDGameEngine.Additional;
 using System.Reflection.PortableExecutable;
 
+// Game Menu class
+
 namespace CMDGameEngine.Menu
 {
     public class GameMenu
     {
-        public bool IsMenuOn { get; private set; }
+        public bool IsMenuOn { get; private set; } // Bool which is use to turn off menu
 
         List<MenuOption> menuOptions;
         private MenuOption currentChooseMenuOption;
 
-        public string? HeaderText { get; private set; }
-        public string? AdditionalText { get; private set; }
+        public string? HeaderText { get; private set; } // Optional text displayed above the menu in the frame.
+        public string? AdditionalText { get; private set; } // Optional text displayed above the menu but not in frame and under the header text.
 
-        public Frame HeaderFrame { get; private set; }
+        public Frame? HeaderFrame { get; private set; } // Frame to header text above the menu.
 
 
         public GameMenu(string? headerText, string? additionalText)
@@ -25,7 +27,10 @@ namespace CMDGameEngine.Menu
             HeaderText = headerText;
             AdditionalText = additionalText;
 
-            HeaderFrame = new Frame();
+            if(headerText != null)
+            {
+                HeaderFrame = new Frame();
+            }
         }
 
         public void AddMenuOptions(List<MenuOption> menuOptions)
@@ -33,6 +38,18 @@ namespace CMDGameEngine.Menu
             this.menuOptions = menuOptions;
             currentChooseMenuOption = this.menuOptions[0];
         }
+
+        public void ChangeHeaderText(string? text)
+        {
+            HeaderText = text;
+
+            if (HeaderText != null && HeaderFrame == null)
+            {
+                HeaderFrame = new Frame();
+            }
+        }
+
+        public void ChangeAdditionalText(string? text) => AdditionalText = text;
 
         public void Show()
         {
@@ -47,7 +64,7 @@ namespace CMDGameEngine.Menu
             {
                 Console.SetCursorPosition(0, 0);
 
-                StringBuilder buffer = new StringBuilder();
+                StringBuilder buffer = new StringBuilder(); //String builder to build a menu 
 
                 if (HeaderText != null)
                 {
@@ -144,18 +161,5 @@ namespace CMDGameEngine.Menu
             Console.Clear();
         }
 
-        private string GetLeftSpacesMargin(int containerWidth, int elementInWidth)
-        {
-            string leftSpacesMargin = "";
-
-            int amountIteration = (containerWidth - elementInWidth) / 2;
-
-            for (int i = 0; i < amountIteration; i++)
-            {
-                leftSpacesMargin += " ";
-            }
-
-            return leftSpacesMargin;
-        }
     }
 }

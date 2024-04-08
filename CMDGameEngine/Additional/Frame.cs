@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+// Class which contain frame signs and GetFrameSignOn method which use to retun a sign on the correct position.
+// Here you have acces to frame sign property, so you can modify your frame.
+
 namespace CMDGameEngine.Additional
 {
     public class Frame

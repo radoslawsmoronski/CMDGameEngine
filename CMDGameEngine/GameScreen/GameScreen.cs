@@ -5,20 +5,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+// GameScreen class is use to draw all game objects on the virutal console screen.
+
 namespace CMDGameEngine.Screen
 {
-    public class Screen
+    public class GameScreen
     {
-        public bool IsScreenOn { get; private set; }
+        public bool IsScreenOn { get; private set; }  // Bool which is use to turn off menu
 
         public int ScreenWidth { get; private set; }
         public int ScreenHeight { get; private set; }
 
         public Frame screenFrame { get; private set; }
 
-        public string? HeaderText { get; private set; } = null;
+        public string? HeaderText { get; private set; } // Optional text displayed above the menu in the frame.
 
-        public Screen(int screenWidth = 50, int screenHeight = 20, string? headerText = null) 
+        public GameScreen(int screenWidth = 50, int screenHeight = 20, string? headerText = null) 
         {
             ScreenWidth = screenWidth;
             ScreenHeight = screenHeight;
@@ -70,10 +72,10 @@ namespace CMDGameEngine.Screen
                         continue;
                     }
 
-                    int screenX = preX + 1;
-                    int screenY = preY + 1;
+                    int screenX = preX - 1;
+                    int screenY = preY - 1;
 
-                    stringBuilder.Append("*");
+                    stringBuilder.Append(GameObjects.GameObjects.GetObjectsCharOn(screenX, screenY));
                 }
                 stringBuilder.AppendLine();
             }

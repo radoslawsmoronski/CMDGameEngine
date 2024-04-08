@@ -1,4 +1,5 @@
-﻿using CMDGameEngine.Menu;
+﻿using CMDGameEngine.GameObjects;
+using CMDGameEngine.Menu;
 using CMDGameEngine.Screen;
 
 namespace CMDSupportProject
@@ -15,6 +16,16 @@ namespace CMDSupportProject
 
         static void Main(string[] args)
         {
+            GameObject object1 = new GameObject(0, 0);
+            object1.Sign = 't';
+
+            GameObject object2 = new GameObject(5, 6);
+            object2.Sign = 'g';
+
+            GameObject object3 = new GameObject(1, 4);
+            object3.Sign = 'h';
+
+
             List<MenuOption> menuOptions = new List<MenuOption>();
 
             menuOptions.Add(new MenuOption("Option 1", () => StartGame()));
@@ -31,7 +42,7 @@ namespace CMDSupportProject
         {
             gameMenu.CloseMenu();
 
-            Screen newScreen = new Screen(50, 20, "test");
+            GameScreen newScreen = new GameScreen(50, 20, "test");
 
             newScreen.Show();
         }
