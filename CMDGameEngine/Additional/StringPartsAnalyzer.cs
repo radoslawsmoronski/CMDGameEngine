@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+// Class to contain some useful methods to cooperate with strings
+
 namespace CMDGameEngine.Additional
 {
     public static class StringPartsAnalyzer
     {
         public static int GetLengthOfTheLongestPart(string[] parts)
+        //Returning the longest string from string array
         {
             int maxLength = 0;
 

@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+// Useful method to use in GameMenu like. ExitGame()
+
 namespace CMDGameEngine.Menu
 {
     public static class MenuOptionsMethods
