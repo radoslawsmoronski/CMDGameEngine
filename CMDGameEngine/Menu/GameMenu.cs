@@ -161,18 +161,5 @@ namespace CMDGameEngine.Menu
             Console.Clear();
         }
 
-        private string GetLeftSpacesMargin(int containerWidth, int elementInWidth)
-        {
-            string leftSpacesMargin = "";
-
-            int amountIteration = (containerWidth - elementInWidth) / 2;
-
-            for (int i = 0; i < amountIteration; i++)
-            {
-                leftSpacesMargin += " ";
-            }
-
-            return leftSpacesMargin;
-        }
     }
 }
