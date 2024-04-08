@@ -32,30 +32,17 @@ namespace CMDSupportProject
             gameMenu.Show();
         }
 
+        static GameScreen newScreen = new GameScreen(60, 15);
+
         private static void StartGame()
         {
             gameMenu.CloseMenu();
 
-            GameScreen newScreen = new GameScreen(60, 15);
 
             Thread inputThread = new Thread(Controller);
             inputThread.Start();
 
-            Thread bitdPhysics = new Thread(SimulateBirdPhysics);
-            bitdPhysics.Start();
-
             newScreen.Show();
-        }
-
-        private static void SimulateBirdPhysics()
-        {
-            while (true)
-            {
-                Thread.Sleep(150);
-                bird.Move(0, +1);
-                Thread.Sleep(150);
-                bird.Move(0, +1);
-            }
         }
 
         private static bool CreateObjects()
@@ -85,6 +72,10 @@ namespace CMDSupportProject
                 if (keyInfo.Key == ConsoleKey.Spacebar)
                 {
                     bird.Jump();
+                }
+                else if (keyInfo.Key == ConsoleKey.RightArrow)
+                {
+                    newScreen.MoveCamera(+1, 0);
                 }
             }
         }
