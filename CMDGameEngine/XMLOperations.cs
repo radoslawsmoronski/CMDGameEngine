@@ -37,7 +37,7 @@ namespace CMDGameEngine
 
                 if (IsFileXML(xmlDoc) == false)
                 {
-                    throw new StringIsNotAXML("String is not a xml.");
+                    throw new StringIsNotAXML("File path points to a file that is not xml.");
                 }
 
                 XDocument doc = XDocument.Load(xmlDoc);

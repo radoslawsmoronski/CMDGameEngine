@@ -2,6 +2,7 @@
 using CMDGameEngine.GameObjects.VisualMap;
 using CMDGameEngine.Menu;
 using CMDGameEngine.Screen;
+using CMDGameEngine.Additional;
 
 namespace CMDSupportProject
 {
@@ -17,9 +18,21 @@ namespace CMDSupportProject
 
         static void Main(string[] args)
         {
-            VisualMap dragon = new VisualMap("dragon.xml");
-            GameObject object1 = new GameObject(0, 0, dragon);
-            
+            try
+            {
+                VisualMap dragon = new VisualMap("dragon.xml");
+
+                GameObject object1 = new GameObject(4, -1, dragon);
+
+                GameObject object2 = new GameObject(0, 8, dragon);
+
+                GameObject object3 = new GameObject(0, 0, dragon);
+            }
+            catch (Exception ex)
+            {
+                ConsoleMessages.Error(ex.Message);
+            }
+
 
 
 
