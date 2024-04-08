@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CMDGameEngine.GameObjects.VisualMap;
 
 namespace CMDGameEngine.GameObjects
 {
@@ -27,7 +28,13 @@ namespace CMDGameEngine.GameObjects
         {
             foreach (GameObject obj in gameObjects)
             {
-                if (obj.X == x && obj.Y == y) return obj.Sign;
+                if (obj.VisualMap == null) continue;
+                
+                VisualMap.VisualMap visualMap = obj.VisualMap;
+
+                char? sign = visualMap.GetSignOn(obj, x, y);
+
+                if (sign != null) return (char)sign;
             }
 
             return ' ';

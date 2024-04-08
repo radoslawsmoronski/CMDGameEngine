@@ -14,7 +14,7 @@ namespace CMDGameEngine.GameObjects
         public int X { get; set; }
         public int Y { get; set; }
 
-        public VisualMap.VisualMap? VisualMap {get; private set;}
+        public VisualMap.VisualMap? VisualMap { get; private set; }
 
         public GameObject(int x, int y, VisualMap.VisualMap? visualMap)
         {
