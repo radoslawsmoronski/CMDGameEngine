@@ -35,5 +35,10 @@ namespace CMDGameEngine.GameObjects
             Y = Y + y;
         }
 
+        public void ChangeVisualMap(VisualMap.VisualMap? visualMap)
+        {
+            VisualMap = visualMap;
+        }
+
     }
 }
