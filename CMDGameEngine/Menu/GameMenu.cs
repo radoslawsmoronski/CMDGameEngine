@@ -40,6 +40,9 @@ namespace CMDGameEngine.Menu
 
             IsMenuOn = true;
 
+            Console.CursorVisible = false;
+            Console.Clear();
+
             while (IsMenuOn)
             {
                 Console.SetCursorPosition(0, 0);
@@ -137,6 +140,7 @@ namespace CMDGameEngine.Menu
         public void CloseMenu()
         {
             IsMenuOn = false;
+            Console.CursorVisible = true;
             Console.Clear();
         }
 

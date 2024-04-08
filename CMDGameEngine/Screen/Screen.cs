@@ -34,6 +34,8 @@ namespace CMDGameEngine.Screen
         public void Show()
         {
             IsScreenOn = true;
+            Console.CursorVisible = false;
+            Console.Clear();
 
             while (IsScreenOn)
             {
@@ -82,6 +84,8 @@ namespace CMDGameEngine.Screen
         public void CloseScreen()
         {
             IsScreenOn = false;
+            Console.CursorVisible = true;
+            Console.Clear();
         }
     }
 }
