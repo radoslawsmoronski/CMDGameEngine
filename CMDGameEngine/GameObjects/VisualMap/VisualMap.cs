@@ -11,7 +11,8 @@ namespace CMDGameEngine.GameObjects.VisualMap
 {
     public class VisualMap
     {
-        List<VisualElement> visualElements;
+        
+        public List<VisualElement> visualElements { get; private set; }
 
         public VisualMap(string? xml)
         {
@@ -35,5 +36,6 @@ namespace CMDGameEngine.GameObjects.VisualMap
 
             return null;
         }
+
     }
 }

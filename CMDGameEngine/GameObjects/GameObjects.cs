@@ -42,6 +42,21 @@ namespace CMDGameEngine.GameObjects
 
         public static bool IsObjectsCollide(GameObject obj1, GameObject obj2)
         {
+            VisualMap.VisualMap visualMap = obj1.VisualMap;
+            VisualMap.VisualMap visualMap2 = obj2.VisualMap;
+
+            foreach (VisualElement visualElement in visualMap.visualElements)
+            {
+                foreach (VisualElement visualElement2 in visualMap2.visualElements)
+                {
+                    int x = visualElement.XPosToVisualMap + obj1.X;
+                    int y = visualElement.YPosToVisualMap + obj1.Y;
+                    int x2 = visualElement2.XPosToVisualMap + obj2.X;
+                    int y2 = visualElement2.YPosToVisualMap + obj2.Y;
+
+                    if(x == x2 && y == y2) return true;
+                }
+            }
 
             return false;
         }
