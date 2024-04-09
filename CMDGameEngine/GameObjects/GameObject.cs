@@ -35,6 +35,12 @@ namespace CMDGameEngine.GameObjects
             Y = Y + y;
         }
 
+        public void SetPosition(int x, int y)
+        {
+            X = x;
+            Y = y;
+        }
+
         public void ChangeVisualMap(VisualMap.VisualMap? visualMap)
         {
             VisualMap = visualMap;

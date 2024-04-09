@@ -40,5 +40,11 @@ namespace CMDGameEngine.GameObjects
             return ' ';
         }
 
+        public static bool IsObjectsCollide(GameObject obj1, GameObject obj2)
+        {
+
+            return false;
+        }
+
     }
 }

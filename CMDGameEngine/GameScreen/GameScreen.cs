@@ -22,7 +22,7 @@ namespace CMDGameEngine.Screen
 
         public Frame screenFrame { get; private set; }
 
-        public string? HeaderText { get; private set; } // Optional text displayed above the menu in the frame.
+        public string? HeaderText { get; set; } // Optional text displayed above the menu in the frame.
 
         public GameScreen(int screenWidth = 50, int screenHeight = 20, string? headerText = null) 
         {
@@ -39,17 +39,22 @@ namespace CMDGameEngine.Screen
 
         public void Show()
         {
-            IsScreenOn = true;
-            Console.CursorVisible = false;
-            Console.Clear();
-
-            while (IsScreenOn)
+            Thread screenThread = new Thread(() =>
             {
-                Console.SetCursorPosition(0, 0);
+                IsScreenOn = true;
+                Console.CursorVisible = false;
+                Console.Clear();
 
-                string screenFramePerIteration = GetScreenFramePerIteration();
-                Console.WriteLine(screenFramePerIteration); 
-            }
+                while (IsScreenOn)
+                {
+                    Console.SetCursorPosition(0, 0);
+
+                    string screenFramePerIteration = GetScreenFramePerIteration();
+                    Console.WriteLine(screenFramePerIteration);
+                }
+            });
+
+            screenThread.Start();
         }
 
         public string GetScreenFramePerIteration()

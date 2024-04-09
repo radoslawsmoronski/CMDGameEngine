@@ -21,7 +21,7 @@ namespace CMDSupportProject
             visualMapFalling = new VisualMap("bird2.xml");
 
             Thread birdPhysics = new Thread(SimulateBirdPhysics);
-            //birdPhysics.Start();
+            birdPhysics.Start();
         }
 
         public void Jump()
@@ -36,18 +36,18 @@ namespace CMDSupportProject
         {
             IsBirdAction = true;
 
-            this.Move(0, -1);
             this.ChangeVisualMap(visualMapFlying);
+            Thread.Sleep(75);
 
-            Thread.Sleep(50);
-
-            this.Move(0, -1);
+            this.Move(0, -2);
             this.ChangeVisualMap(visualMapFalling);
 
-            Thread.Sleep(50);
-
-            this.Move(0, -1);
             this.ChangeVisualMap(visualMapFlying);
+            Thread.Sleep(75);
+
+            this.Move(0, -2);
+            this.ChangeVisualMap(visualMapFalling);
+
 
             IsBirdAction = false;
         }
@@ -56,7 +56,10 @@ namespace CMDSupportProject
         {
             while (true)
             {
-                if (IsBirdAction) continue;
+                if (IsBirdAction)
+                {
+                    continue;
+                }
 
                 Thread.Sleep(150);
                 this.Move(0, +1);
