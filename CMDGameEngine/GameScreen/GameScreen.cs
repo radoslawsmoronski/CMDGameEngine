@@ -12,6 +12,7 @@ namespace CMDGameEngine.Screen
     public class GameScreen
     {
         public bool IsScreenOn { get; private set; }  // Bool which is use to turn off menu
+        private Thread screenThread;
 
         public int ScreenWidth { get; private set; }
         public int ScreenHeight { get; private set; }
@@ -39,7 +40,7 @@ namespace CMDGameEngine.Screen
 
         public void Show()
         {
-            Thread screenThread = new Thread(() =>
+            screenThread = new Thread(() =>
             {
                 IsScreenOn = true;
                 Console.CursorVisible = false;
@@ -52,6 +53,7 @@ namespace CMDGameEngine.Screen
                     string screenFramePerIteration = GetScreenFramePerIteration();
                     Console.WriteLine(screenFramePerIteration);
                 }
+
             });
 
             screenThread.Start();
@@ -97,6 +99,9 @@ namespace CMDGameEngine.Screen
         public void CloseScreen()
         {
             IsScreenOn = false;
+
+            screenThread.Join();
+
             Console.CursorVisible = true;
             Console.Clear();
         }

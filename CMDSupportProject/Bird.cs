@@ -38,12 +38,14 @@ namespace CMDSupportProject
 
             this.ChangeVisualMap(visualMapFlying);
             Thread.Sleep(75);
+            Console.Beep(750, 75);
 
             this.Move(0, -2);
             this.ChangeVisualMap(visualMapFalling);
 
             this.ChangeVisualMap(visualMapFlying);
             Thread.Sleep(75);
+            Console.Beep(650, 75);
 
             this.Move(0, -2);
             this.ChangeVisualMap(visualMapFalling);

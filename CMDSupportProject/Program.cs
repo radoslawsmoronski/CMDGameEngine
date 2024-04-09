@@ -43,7 +43,7 @@ namespace CMDSupportProject
 
             List<Block> blocks = new List<Block>();
 
-            int previousBlockX = 0;
+            int previousBlockX = newScreen.ScreenWidth/2;
 
             for (int i = 0; i <= 3; i++)
             {
@@ -108,12 +108,23 @@ namespace CMDSupportProject
 
                 bird.Move(+1, 0);
                 newScreen.MoveCamera(+1, 0);
+
+                if(bird.Y == newScreen.ScreenHeight)
+                {
+                    GameOver(points);
+                }
                 
                 foreach(Block block in blocks)
                 {
+                    if(GameObjects.IsObjectsCollide(bird, block))
+                    {
+                        GameOver(points);
+                    }
+
                     if ((bird.X) == block.X+5)
                     {
                         points++;
+                        Console.Beep(400, 40);
                     }
                 }
             }
@@ -159,6 +170,17 @@ namespace CMDSupportProject
                     bird.Jump();
                 }
             }
+        }
+
+        private static void GameOver(int points)
+        {
+            newScreen.CloseScreen();
+
+            Console.WriteLine($"Game Over!\nYou've got {points} points!");
+
+            Console.ReadKey(true);  
+
+            gameMenu.Show();
         }
 
 
