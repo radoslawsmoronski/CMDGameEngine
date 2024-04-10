@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 // This class is a part of the VisualMap, and containt char on specific position in the game.
 
-namespace CMDGameEngine.GameObjects.VisualMap
+namespace CMDGameEngine.Objects.VisualMap
 {
     public class VisualElement
     {

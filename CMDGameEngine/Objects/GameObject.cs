@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CMDGameEngine.GameObjects.VisualMap;
+using CMDGameEngine.Objects.VisualMap;
 
 // Game Object class, objects used directly in the game, such as background, obstacles or something.
 
-namespace CMDGameEngine.GameObjects
+namespace CMDGameEngine.Objects
 {
     public class GameObject
     {
@@ -33,6 +33,17 @@ namespace CMDGameEngine.GameObjects
         {
             X = X + x;
             Y = Y + y;
+        }
+
+        public void SetPosition(int x, int y)
+        {
+            X = x;
+            Y = y;
+        }
+
+        public void ChangeVisualMap(VisualMap.VisualMap? visualMap)
+        {
+            VisualMap = visualMap;
         }
 
     }

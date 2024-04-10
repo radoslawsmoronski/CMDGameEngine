@@ -17,10 +17,23 @@ namespace CMDGameEngine.Menu
 
             if (ConsoleMessages.Confirmation("Do you want exit game?"))
             {
-                return;
+                Environment.Exit(0);
             }
 
             gameMenu.Show();
         }
+
+        public static void InformationSite(GameMenu gameMenu, string text)
+        {
+            gameMenu.CloseMenu();
+
+            Console.WriteLine(text + "\n");
+
+            Console.Write("Press button to back to the menu...");
+            Console.ReadKey();
+
+            gameMenu.Show();
+        }
+
     }
 }

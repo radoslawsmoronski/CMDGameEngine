@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 // Class to containt a visual part of an object.
 
-namespace CMDGameEngine.GameObjects.VisualMap
+namespace CMDGameEngine.Objects.VisualMap
 {
     public class VisualMap
     {
-        List<VisualElement> visualElements;
+        
+        public List<VisualElement> visualElements { get; private set; }
 
         public VisualMap(string? xml)
         {
@@ -35,5 +36,6 @@ namespace CMDGameEngine.GameObjects.VisualMap
 
             return null;
         }
+
     }
 }

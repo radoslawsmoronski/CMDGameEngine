@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using CMDGameEngine.GameObjects.VisualMap;
+using CMDGameEngine.Objects.VisualMap;
 
 // Class for XML parsing, loading, editing etd.
 

@@ -12,13 +12,18 @@ namespace CMDGameEngine.Screen
     public class GameScreen
     {
         public bool IsScreenOn { get; private set; }  // Bool which is use to turn off menu
+        private Thread screenThread;
 
         public int ScreenWidth { get; private set; }
         public int ScreenHeight { get; private set; }
 
+        public int CameraX { get; private set; } // Camera position X
+        public int CameraY { get; private set; } // Camera position Y
+
+
         public Frame screenFrame { get; private set; }
 
-        public string? HeaderText { get; private set; } // Optional text displayed above the menu in the frame.
+        public string? HeaderText { get; set; } // Optional text displayed above the menu in the frame.
 
         public GameScreen(int screenWidth = 50, int screenHeight = 20, string? headerText = null) 
         {
@@ -35,17 +40,23 @@ namespace CMDGameEngine.Screen
 
         public void Show()
         {
-            IsScreenOn = true;
-            Console.CursorVisible = false;
-            Console.Clear();
-
-            while (IsScreenOn)
+            screenThread = new Thread(() =>
             {
-                Console.SetCursorPosition(0, 0);
+                IsScreenOn = true;
+                Console.CursorVisible = false;
+                Console.Clear();
 
-                string screenFramePerIteration = GetScreenFramePerIteration();
-                Console.WriteLine(screenFramePerIteration); 
-            }
+                while (IsScreenOn)
+                {
+                    Console.SetCursorPosition(0, 0);
+
+                    string screenFramePerIteration = GetScreenFramePerIteration();
+                    Console.WriteLine(screenFramePerIteration);
+                }
+
+            });
+
+            screenThread.Start();
         }
 
         public string GetScreenFramePerIteration()
@@ -61,6 +72,8 @@ namespace CMDGameEngine.Screen
                 stringBuilder.AppendLine();
             }
 
+
+
             for (int preY = 0; preY < (ScreenHeight + 2); preY++)
             {
                 stringBuilder.Append(" ");
@@ -72,10 +85,10 @@ namespace CMDGameEngine.Screen
                         continue;
                     }
 
-                    int screenX = preX - 1;
-                    int screenY = preY - 1;
+                    int screenX = preX - 1 + CameraX;
+                    int screenY = preY - 1 + CameraY;
 
-                    stringBuilder.Append(GameObjects.GameObjects.GetObjectsCharOn(screenX, screenY));
+                    stringBuilder.Append(Objects.GameObjects.GetObjectsCharOn(screenX, screenY));
                 }
                 stringBuilder.AppendLine();
             }
@@ -86,8 +99,17 @@ namespace CMDGameEngine.Screen
         public void CloseScreen()
         {
             IsScreenOn = false;
+
+            screenThread.Join();
+
             Console.CursorVisible = true;
             Console.Clear();
+        }
+
+        public void MoveCamera(int x, int y)
+        {
+            CameraX += x;
+            CameraY += y;
         }
     }
 }
