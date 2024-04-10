@@ -17,7 +17,7 @@ namespace CMDGameEngine.Menu
 
             if (ConsoleMessages.Confirmation("Do you want exit game?"))
             {
-                return;
+                Environment.Exit(0);
             }
 
             gameMenu.Show();

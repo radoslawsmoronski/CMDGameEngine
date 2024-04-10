@@ -1,5 +1,5 @@
-﻿using CMDGameEngine.GameObjects;
-using CMDGameEngine.GameObjects.VisualMap;
+﻿using CMDGameEngine.Objects;
+using CMDGameEngine.Objects.VisualMap;
 using System;
 using System.Collections.Generic;
 using System.Linq;

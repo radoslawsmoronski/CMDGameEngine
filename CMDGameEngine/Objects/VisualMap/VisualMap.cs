@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 // Class to containt a visual part of an object.
 
-namespace CMDGameEngine.GameObjects.VisualMap
+namespace CMDGameEngine.Objects.VisualMap
 {
     public class VisualMap
     {

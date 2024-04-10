@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CMDGameEngine.GameObjects.VisualMap;
+using CMDGameEngine.Objects.VisualMap;
 
-namespace CMDGameEngine.GameObjects
+namespace CMDGameEngine.Objects
 {
 
     // Class which is focus on contain GameObjects

@@ -88,7 +88,7 @@ namespace CMDGameEngine.Screen
                     int screenX = preX - 1 + CameraX;
                     int screenY = preY - 1 + CameraY;
 
-                    stringBuilder.Append(GameObjects.GameObjects.GetObjectsCharOn(screenX, screenY));
+                    stringBuilder.Append(Objects.GameObjects.GetObjectsCharOn(screenX, screenY));
                 }
                 stringBuilder.AppendLine();
             }
