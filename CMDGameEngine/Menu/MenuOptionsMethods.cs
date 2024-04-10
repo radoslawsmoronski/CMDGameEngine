@@ -22,5 +22,17 @@ namespace CMDGameEngine.Menu
 
             gameMenu.Show();
         }
+
+        public static void InformationSite(GameMenu gameMenu, string text)
+        {
+            gameMenu.CloseMenu();
+
+            Console.WriteLine(text + "\n");
+
+            Console.Write("Press button to back to the menu...");
+            Console.ReadKey();
+
+            gameMenu.Show();
+        }
     }
 }

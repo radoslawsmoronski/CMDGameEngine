@@ -5,6 +5,7 @@ using CMDGameEngine.Screen;
 using CMDGameEngine.Additional;
 using System.Linq.Expressions;
 using static System.Reflection.Metadata.BlobBuilder;
+using System.IO;
 
 namespace CMDSupportProject
 {
@@ -17,9 +18,9 @@ namespace CMDSupportProject
             "    Falling bird    \n" +
             "                    ";
 
-        static string additionalHeaderString = "Sample game created on\nCMDGameEngine.\n\nBy Radoslaw Smoronski";
+        static string additionalText = $"  Points record: {GetHighestNumberOfPoints()}";
 
-        static GameMenu gameMenu = new GameMenu(headerString, additionalHeaderString);
+        static GameMenu gameMenu = new GameMenu(headerString, additionalText);
 
 
         // Game Screen
@@ -40,6 +41,8 @@ namespace CMDSupportProject
             List<MenuOption> menuOptions = new List<MenuOption>(); // Creating menu options list
 
             menuOptions.Add(new MenuOption("Start Game", () => StartGame())); // Adding option 1 with new custom method
+            string gameInformationString = "Sample game created on\nCMDGameEngine.\n\nBy Radoslaw Smoronski";
+            menuOptions.Add(new MenuOption("Game information", () => MenuOptionsMethods.InformationSite(gameMenu, gameInformationString)));  // Adding option 2 and including default Exit Game method from MenuOptionsMethods 
             menuOptions.Add(new MenuOption("Exit Game", () => MenuOptionsMethods.ExitGame(gameMenu)));  // Adding option 2 and including default Exit Game method from MenuOptionsMethods 
 
             gameMenu.AddMenuOptions(menuOptions); // Adding menu option list to the menu
@@ -205,8 +208,11 @@ namespace CMDSupportProject
             }
         }
 
-        private static void GameOver(int points)
+        static void GameOver(int points)
         {
+            if(points>GetHighestNumberOfPoints()) 
+                SaveHighestNumberOfPoints(points);
+
             Console.Beep(1000, 50);
             Console.Beep(800, 100);
             Console.Beep(600, 200);
@@ -219,9 +225,46 @@ namespace CMDSupportProject
 
             Console.WriteLine($"Game Over!\nYou've got {points} points! Press double..");
 
-            Console.ReadKey(true);  
+            Console.ReadKey(true);
 
+            gameMenu.ChangeAdditionalText($"  Points record: {GetHighestNumberOfPoints()}");
             gameMenu.Show();
+        }
+
+        static int GetHighestNumberOfPoints()
+        {
+            int number = 0;
+
+            try
+            {
+                using (StreamReader reader = new StreamReader("points.txt"))
+                {
+                    string line = reader.ReadLine();
+                    number = int.Parse(line);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                SaveHighestNumberOfPoints(0);
+            }
+
+            return number;
+        }
+
+        static void SaveHighestNumberOfPoints(int number)
+        {
+            try
+            {
+                using (StreamWriter writer = new StreamWriter("points.txt"))
+                {
+                    writer.WriteLine(number);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
         }
 
 
