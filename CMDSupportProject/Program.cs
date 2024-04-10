@@ -54,16 +54,25 @@ namespace CMDSupportProject
         {
             gameScreen = new GameScreen(80, 20, "Points"); // Create Game Screen with additional text above the screen
 
-            if (!CreateObjects()) return; // Create bird and blocks
+            VisualMap dragonVisualMap = new VisualMap("dragon.xml");
+            GameObject dragon = new GameObject(40, 10, dragonVisualMap);
+
+            //if (!CreateObjects()) return; // Create bird and blocks
 
             gameMenu.CloseMenu(); // Close Menu
 
-            Thread controllerThread = new Thread(Controller);
-            controllerThread.Start(); // Start bird controller
+            //Thread controllerThread = new Thread(Controller);
+            //controllerThread.Start(); // Start bird controller
 
             gameScreen.Show(); // Show Game screen in the console
 
-            int scene = 1; // Counter how many screen width has been scrolled by Screen Camera
+            while(true)
+            {
+                Console.ReadKey();
+                dragonVisualMap.RotateX(true);
+            }
+
+            /*int scene = 1; // Counter how many screen width has been scrolled by Screen Camera
             int points = 0; // Game points
 
             bool IsGameOver = false;
@@ -136,7 +145,7 @@ namespace CMDSupportProject
                     Console.Beep(200, 250);
                     Thread.Sleep(250);
                 }
-            }
+            }*/
         }
 
         static int GetTheBiggestXFromBlocks(List<GameObject> objs)

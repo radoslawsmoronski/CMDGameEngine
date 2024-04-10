@@ -14,6 +14,8 @@ namespace CMDGameEngine.Objects.VisualMap
         
         public List<VisualElement> visualElements { get; private set; }
 
+        private Dictionary<char, char> invertedSigns = null;
+
         public VisualMap(string? xml)
         {
             if (xml == null) throw new ArgumentNullException(nameof(xml));
@@ -35,6 +37,54 @@ namespace CMDGameEngine.Objects.VisualMap
             }
 
             return null;
+        }
+
+        public void RotateX(bool isChangeSideSigns = false)
+        {
+            int visualMapWidth = 0;
+
+            foreach (VisualElement element in visualElements) // Getting visualMapWidth value 
+            {
+                if(element.XPosToVisualMap > visualMapWidth) visualMapWidth = element.XPosToVisualMap;
+            }
+
+            foreach (VisualElement element in visualElements)
+            {
+                int oldX = element.XPosToVisualMap;
+
+                element.XPosToVisualMap = Math.Abs(oldX - visualMapWidth);
+
+                if(isChangeSideSigns)
+                {
+                    element.Sign = GetRotateSign(element.Sign);
+                }
+            }
+        }
+
+        private char GetRotateSign(char sign)
+        {
+            if(invertedSigns == null)
+            {
+                invertedSigns = new Dictionary<char, char>
+                {
+                    { '(', ')' },
+                    { '[', ']' },
+                    { '{', '}' },
+                    { '/', '\\' },
+                    { '\\', '/' },
+                    { '<', '>' }
+                };
+            }
+
+            char signToReturn = sign;
+
+            foreach (KeyValuePair<char, char> pair in invertedSigns)
+            {
+                if (sign == pair.Key) signToReturn = pair.Value;
+                else if (sign == pair.Value) signToReturn = pair.Key;
+            }
+
+            return signToReturn;
         }
 
     }

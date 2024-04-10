@@ -10,10 +10,10 @@ namespace CMDGameEngine.Objects.VisualMap
 {
     public class VisualElement
     {
-        public int XPosToVisualMap { get; private set; }
-        public int YPosToVisualMap { get; private set; }
+        public int XPosToVisualMap { get; set; }
+        public int YPosToVisualMap { get; set; }
 
-        public char Sign {  get; private set; }
+        public char Sign {  get; set; }
 
         public VisualElement(int x, int y, char sign)
         {
