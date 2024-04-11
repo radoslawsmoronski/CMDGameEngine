@@ -15,7 +15,6 @@ namespace CMDGameEngine.Objects.VisualMap
         public List<VisualElement> visualElements { get; private set; }
 
         private Dictionary<char, char> invertedXSigns = null;
-        private Dictionary<char, char> invertedYSigns = null;
 
         public VisualMap(string? xml)
         {
