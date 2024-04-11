@@ -14,7 +14,8 @@ namespace CMDGameEngine.Objects.VisualMap
         
         public List<VisualElement> visualElements { get; private set; }
 
-        private Dictionary<char, char> invertedSigns = null;
+        private Dictionary<char, char> invertedXSigns = null;
+        private Dictionary<char, char> invertedYSigns = null;
 
         public VisualMap(string? xml)
         {
@@ -56,16 +57,16 @@ namespace CMDGameEngine.Objects.VisualMap
 
                 if(isChangeSideSigns)
                 {
-                    element.Sign = GetRotateSign(element.Sign);
+                    element.Sign = GetRotateXSign(element.Sign);
                 }
             }
         }
 
-        private char GetRotateSign(char sign)
+        private char GetRotateXSign(char sign)
         {
-            if(invertedSigns == null)
+            if (invertedXSigns == null)
             {
-                invertedSigns = new Dictionary<char, char>
+                invertedXSigns = new Dictionary<char, char>
                 {
                     { '(', ')' },
                     { '[', ']' },
@@ -78,13 +79,30 @@ namespace CMDGameEngine.Objects.VisualMap
 
             char signToReturn = sign;
 
-            foreach (KeyValuePair<char, char> pair in invertedSigns)
+            foreach (KeyValuePair<char, char> pair in invertedXSigns)
             {
                 if (sign == pair.Key) signToReturn = pair.Value;
                 else if (sign == pair.Value) signToReturn = pair.Key;
             }
 
             return signToReturn;
+        }
+
+        public void RotateY()
+        {
+            int visualMapHeight = 0;
+
+            foreach (VisualElement element in visualElements)
+            {
+                if (element.YPosToVisualMap > visualMapHeight) visualMapHeight = element.YPosToVisualMap;
+            }
+
+            foreach (VisualElement element in visualElements)
+            {
+                int oldY = element.YPosToVisualMap;
+
+                element.YPosToVisualMap = Math.Abs(oldY - visualMapHeight);
+            }
         }
 
     }
