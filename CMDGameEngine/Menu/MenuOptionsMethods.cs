@@ -34,6 +34,5 @@ namespace CMDGameEngine.Menu
 
             gameMenu.Show();
         }
-
     }
 }
