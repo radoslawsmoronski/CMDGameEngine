@@ -24,6 +24,18 @@ CMDGameEngine is developed on .NET 8.0, hence it requires .NET 8.0 runtime envir
 
 The repository includes a sample game using CMDGameEngine. You can run it to see the capabilities of the engine.
 
+## Visual Map xml file
+
+Structure of Visual Map xml file for GameObjects 
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<objectVisualMap>
+  <element x="0" y="0" sign="?" />
+</objectVisualMap>
+```
+
+- Txt To XML VisualMap CMDGameEngine Converter (https://github.com/radoslawsmoronski/TxtToXmlVisualMapCMDGameEngineConverter).
+
 ## Author
 
 - Radosław Smoroński
