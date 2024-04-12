@@ -22,7 +22,7 @@ namespace CMDGameEngine.Menu
         public Frame? HeaderFrame { get; private set; } // Frame to header text above the menu.
 
 
-        public GameMenu(string? headerText, string? additionalText)
+        public GameMenu(string? headerText = null, string? additionalText = null)
         {
             HeaderText = headerText;
             AdditionalText = additionalText;
