@@ -2,10 +2,14 @@
 
 CMDGameEngine is a simple console game engine written in C# on .NET 8.0 platform. It consists of three main components: GameObjects, GameMenu, and GameScreen, allowing you to create interactive console games.
 
-## Installation CMDGameEngine library
+# Installation
 
-.net cli
-> dotnet add package CMDGameEngine --version 1.0.0
+To use CMDGameEngine, simply add the provided DLL file to your project. No additional installations or configurations are required.
+You can also add it from NuGet Manager or https://www.nuget.org/packages/CMDGameEngine.
+
+## Installation .net cli
+
+> dotnet add package CMDGameEngine --version 1.0.4
 
 ## Using the Engine
 

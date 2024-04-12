@@ -35,12 +35,20 @@ namespace CMDGameEngine
             {
                 List<VisualElement> visualElements = new List<VisualElement> ();
 
-                if (IsFileXML(xmlDoc) == false)
+                XDocument doc;
+
+                if (IsFileXML(xmlDoc) == true)
+                {
+                    doc = XDocument.Load(xmlDoc);
+                }
+                else if (IsStringXML(xmlDoc) == true)
+                {
+                    doc = XDocument.Parse(xmlDoc);
+                }
+                else
                 {
                     throw new StringIsNotAXML("File path points to a file that is not xml.");
                 }
-
-                XDocument doc = XDocument.Load(xmlDoc);
 
                 var elementsFromXML = from element in doc.Descendants("element")
                                       select new
