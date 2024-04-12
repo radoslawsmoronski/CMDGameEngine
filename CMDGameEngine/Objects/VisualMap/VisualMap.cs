@@ -16,7 +16,8 @@ namespace CMDGameEngine.Objects.VisualMap
 
         private Dictionary<char, char> invertedXSigns = null;
 
-        public VisualMap(string? xml)
+
+        public VisualMap(string? xml = null)
         {
             if (xml == null) throw new ArgumentNullException(nameof(xml));
 
